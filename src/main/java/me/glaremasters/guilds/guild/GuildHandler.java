@@ -571,7 +571,7 @@ public class GuildHandler {
      * @param player the player being checked
      * @return {@code true} if the player is a spy, {@code false} otherwise
      */
-    public boolean isSpy(@NotNull final Player player) {
+    private boolean isSpy(@NotNull final Player player) {
         return spies.contains(player);
     }
 

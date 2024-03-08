@@ -6,19 +6,19 @@ import java.net.URL
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.22"
-    id("net.kyori.indra") version "3.1.3"
-    id("net.kyori.indra.publishing") version "3.1.3"
-    id("net.kyori.indra.license-header") version "3.1.3"
+    id("org.jetbrains.kotlin.jvm") version "1.8.22"
+    id("net.kyori.indra") version "3.1.1"
+    id("net.kyori.indra.publishing") version "3.1.1"
+    id("net.kyori.indra.license-header") version "3.1.1"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.github.slimjar") version "1.3.0"
-    id("xyz.jpenilla.run-paper") version "2.2.0"
-    id("com.github.ben-manes.versions") version "0.48.0"
-    id("org.jetbrains.dokka") version "1.9.10"
+    id("xyz.jpenilla.run-paper") version "2.1.0"
+    id("com.github.ben-manes.versions") version "0.47.0"
+    id("org.jetbrains.dokka") version "1.8.20"
 }
 
 group = "me.glaremasters"
-version = "3.5.7.1-SNAPSHOT"
+version = "3.5.7.0"
 
 base {
     archivesBaseName = "Guilds"
@@ -33,10 +33,7 @@ apply {
 repositories {
     mavenCentral()
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/") {
-        content {
-            includeGroup("org.bukkit")
-            includeGroup("org.spigotmc")
-        }
+        content { includeGroup("org.bukkit") }
     }
     maven("https://oss.sonatype.org/content/groups/public/")
     maven("https://repo.aikar.co/content/groups/aikar/") {
@@ -58,17 +55,18 @@ dependencies {
     implementation("org.codemc.worldguardwrapper:worldguardwrapper:1.1.9-SNAPSHOT")
     implementation("ch.jalu:configme:1.3.0")
     implementation("com.dumptruckman.minecraft:JsonConfiguration:1.1")
-    implementation("com.github.cryptomorin:XSeries:9.8.1")
-    implementation("net.kyori:adventure-platform-bukkit:4.3.2")
+    implementation("com.github.cryptomorin:XSeries:9.4.0")
+    implementation("net.kyori:adventure-platform-bukkit:4.3.0")
     implementation("dev.triumphteam:triumph-gui:3.1.5")
     implementation("com.zaxxer:HikariCP:4.0.3")
     implementation("org.jdbi:jdbi3-core:3.8.2")
     implementation("org.jdbi:jdbi3-sqlobject:3.8.2")
     implementation("org.mariadb.jdbc:mariadb-java-client:2.7.2")
 
-    compileOnly("org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly("net.milkbowl:vault:1.7")
-    compileOnly("me.clip:placeholderapi:2.11.5")
+    compileOnly("com.mojang:authlib:1.5.25")
+    compileOnly("me.clip:placeholderapi:2.11.3")
 
     slim("org.jetbrains.kotlin:kotlin-stdlib")
 }
@@ -119,7 +117,7 @@ tasks {
     }
 
     runServer {
-        minecraftVersion("1.20.4")
+        minecraftVersion("1.20")
     }
 
     license {

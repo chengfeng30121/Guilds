@@ -100,13 +100,7 @@ class ListGUI(private val guilds: Guilds, private val settingsManager: SettingsM
     private fun setListItem(guild: Guild, player: Player) {
         val defaultUrl = settingsManager.getProperty(GuildListSettings.GUILD_LIST_HEAD_DEFAULT_URL)
         val useDefaultUrl = settingsManager.getProperty(GuildListSettings.USE_DEFAULT_TEXTURE)
-
-        val item = if (!useDefaultUrl && guild.skull != null && guild.guildSkull != null) {
-            guild.skull
-        } else {
-            GuildSkull(defaultUrl).itemStack
-        }
-
+        val item = if (!useDefaultUrl) guild.skull else GuildSkull(defaultUrl).itemStack
         val meta = item.itemMeta
         var name = settingsManager.getProperty(GuildListSettings.GUILD_LIST_ITEM_NAME)
 
@@ -154,7 +148,6 @@ class ListGUI(private val guilds: Guilds, private val settingsManager: SettingsM
                     .replace("{guild-tier}", tier)
                     .replace("{guild-balance}", EconomyUtils.format(guild.balance))
                     .replace("{guild-member-count}", guild.size.toString())
-                    .replace("{guild-members-online}", guild.onlineMembers.size.toString())
                     .replace("{guild-challenge-wins}", guild.guildScore.wins.toString())
                     .replace("{guild-challenge-loses}", guild.guildScore.loses.toString())
                     .replace("{creation}", sdf.format(guild.creationDate))
